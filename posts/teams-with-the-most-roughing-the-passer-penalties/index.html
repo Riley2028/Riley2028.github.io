@@ -9,7 +9,7 @@
 <meta name="author" content="Riley Herndon">
 <meta name="dcterms.date" content="2026-11-02">
 
-<title>CHANGE THIS TO BE THE TITLE OF YOUR POST – Riley Herndon’s sports site</title>
+<title>ROUGHING THE PASSER PENALTIES BY TEAM SINCE 2014 – Riley Herndon’s sports site</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -148,9 +148,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">CHANGE THIS TO BE THE TITLE OF YOUR POST</h1>
+      <h1 class="title">ROUGHING THE PASSER PENALTIES BY TEAM SINCE 2014</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">lowercaseword</div>
+                <div class="quarto-category">football</div>
+                <div class="quarto-category">penalties</div>
+                <div class="quarto-category">roughing the passer</div>
               </div>
                   </div>
   </div>
@@ -187,25 +189,146 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>Hello. This us a test post.</p>
+<p>Which NFL Teams Get Called for Roughing the Passer the Most?</p>
+<p>Roughing the passer is one of those penalties that can get fans talking pretty quickly. It can keep a drive alive, give an offense extra yards and sometimes have a big impact on the outcome of a game. But do some NFL teams get called for it more than others?</p>
+<p>I wanted to take a closer look at that question by looking at roughing-the-passer penalties across the NFL since 2014. By comparing teams, looking at the seasons with the most calls and tracking the numbers over time, we can see which teams stand out.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>roughing2014 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"Data - 2014.csv"</span>) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">season =</span> <span class="dv">2014</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>roughing2015 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"Data - 2015.csv"</span>) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">season =</span> <span class="dv">2015</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>roughing2016 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"Data - 2016.csv"</span>) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">season =</span> <span class="dv">2016</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>roughing2017 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"Data - 2017.csv"</span>) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">season =</span> <span class="dv">2017</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>roughing2018 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"Data - 2018.csv"</span>) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">season =</span> <span class="dv">2018</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>roughing2019 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"Data - 2019.csv"</span>) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">season =</span> <span class="dv">2019</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>roughing2020 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"Data - 2020.csv"</span>) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">season =</span> <span class="dv">2020</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>roughing2021 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"Data - 2021.csv"</span>) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">season =</span> <span class="dv">2021</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>roughing2022 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"Data - 2022.csv"</span>) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">season =</span> <span class="dv">2022</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>roughing2023 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"Data - 2023.csv"</span>) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">season =</span> <span class="dv">2023</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>roughing2024 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"Data - 2024.csv"</span>) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">season =</span> <span class="dv">2024</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>roughing2025 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"Data - 2025.csv"</span>) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">season =</span> <span class="dv">2025</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>roughing2026 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"Data - 2026.csv"</span>) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">season =</span> <span class="dv">2026</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.2.1     ✔ readr     2.2.0
-✔ forcats   1.0.1     ✔ stringr   1.6.0
-✔ ggplot2   4.0.3     ✔ tibble    3.3.1
-✔ lubridate 1.9.5     ✔ tidyr     1.3.2
-✔ purrr     1.2.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>roughing <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(roughing2014,roughing2015,roughing2016,roughing2017,roughing2018,roughing2019,roughing2020,roughing2021,roughing2022,roughing2023,roughing2024,roughing2025,roughing2026) <span class="sc">|&gt;</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">Name =</span> <span class="fu">case_when</span>(</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    Name <span class="sc">==</span> <span class="st">"San Diego"</span> <span class="sc">~</span> <span class="st">"LA Chargers"</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    Name <span class="sc">==</span> <span class="st">"St. Louis"</span> <span class="sc">~</span> <span class="st">"LA Rams"</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    Name <span class="sc">==</span> <span class="st">"Oakland"</span> <span class="sc">~</span> <span class="st">"Las Vegas"</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> Name</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">teamseason =</span> <span class="fu">paste</span>(Name, season)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  ) </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>team_totals <span class="ot">&lt;-</span> roughing <span class="sc">|&gt;</span> </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Name) <span class="sc">|&gt;</span> </span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">total_penalties =</span> <span class="fu">sum</span>(Count...<span class="dv">3</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_bar</span>(<span class="at">data =</span> team_totals,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Name, total_penalties),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="at">weight =</span> total_penalties,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="at">fill =</span> Name)) <span class="sc">+</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a> <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Baltimore"</span> <span class="ot">=</span> <span class="st">"#241773"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">"N.Y. Jets"</span> <span class="ot">=</span> <span class="st">"#125740"</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>   <span class="st">"Chicago"</span> <span class="ot">=</span> <span class="st">"#0B162A"</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  ), <span class="at">na.value =</span> <span class="st">"lightgray"</span>) <span class="sc">+</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"NFL Roughing the Passer Penalties Since 2014"</span>,</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Which NFL teams have been flagged the most?"</span>,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"NFL Team"</span>,</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Total Penalties"</span>,</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Source: NFL Penalties (nflpenalties.com) | Created by Riley Herndon"</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
+</div>
+<p>Which NFL teams have been called the most?</p>
+<p>The first chart shows the total number of roughing-the-passer penalties for each NFL team since 2014. It gives us a chance to see which teams have been called the most and which ones have stayed toward the bottom. Some teams have much higher totals than others, which makes it interesting to see how those numbers compare across the league. With the Ravens and Jets having the most and the most surprising team in the Chicago Bears being third.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>top_seasons <span class="ot">&lt;-</span> roughing <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(Count...<span class="dv">3</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Team_Season =</span> <span class="fu">paste</span>(Name, season))</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">geom_bar</span>(<span class="at">data =</span> top_seasons,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Team_Season, Count...<span class="dv">3</span>),</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="at">weight =</span> Count...<span class="dv">3</span>),</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Most Roughing the Passer Penalties in One NFL Season"</span>,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"The 10 highest team totals in a single season since 2014."</span>,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"NFL Team and Season"</span>,</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Total Penalties"</span>,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Source: NFL Penalties (nflpenalties.com) | Created by Riley Herndon</span><span class="sc">\n</span><span class="st">Data accessed: November 10, 2026"</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>What team had the most in one season?</p>
+<p>Total penalties over several years only tell part of the story. A team might not be near the top overall but could have had one season where it was called for roughing the passer a lot. The second chart shows the 10 highest team totals in a single season since 2014. This gives us a better look at some of the biggest seasons and shows which teams had the most trouble with this penalty in one year. With the 2020 N.Y. Jets having the most in a season with 14, follow by 2019 Baltimore Ravens with 11. But, one team with has a chance this year to break that record that being the Green Bay Packers. As the pace they are on right now they will break the record by one game.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>yearly_totals <span class="ot">&lt;-</span> roughing <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(season) <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(<span class="at">total_penalties =</span> <span class="fu">sum</span>(Count...<span class="dv">3</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(season)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(yearly_totals, <span class="fu">aes</span>(<span class="at">x =</span> season, <span class="at">y =</span> total_penalties)) <span class="sc">+</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"steelblue"</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"NFL Roughing the Passer Penalties by Season"</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Tracking how roughing the passer calls have changed across the NFL since 2014."</span>,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"NFL Season"</span>,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Total Roughing the Passer Penalties"</span>,</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Source: NFL Penalties (nflpenalties.com) | Created by Riley Herndon"</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>How have the calls changed over time?</p>
+<p>The final chart looks at the total number of roughing-the-passer penalties across the NFL each season since 2014. This helps show whether the league has seen more calls over the years or if the numbers have stayed fairly similar. It also gives us a better idea of how much the penalty has changed over time. With the 2021 season ending with a combined total of 154 roughing the penalties at the end of the year.</p>
+<p>The bigger picture</p>
+<p>Roughing the passer is always going to be an important penalty because of the protection rules surrounding quarterbacks. At the same time, it can be frustrating for teams and fans when a call changes the direction of a game. Looking at the numbers since 2014 gives us a better idea of which teams have been called the most and how the penalty has changed across the NFL. It shows that there is more to the conversation than just one questionable call during a game.</p>
 
 
 
